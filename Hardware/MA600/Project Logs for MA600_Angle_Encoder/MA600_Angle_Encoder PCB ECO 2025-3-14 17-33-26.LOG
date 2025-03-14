@@ -1,0 +1,14 @@
+Change Footprint: Footprint Not Found qfn-16-l3.0-w3.0-p0.50-tl-ep1.7
+Add Component: Footprint Not Found c0402
+Add Component: Footprint Not Found c0402
+Add Pin To Net: Unknown Pin: Pin C3-1
+Add Pin To Net: Unknown Pin: Pin C3-2
+Add Pin To Net: Unknown Pin: Pin C4-1
+Add Pin To Net: Unknown Pin: Pin C4-2
+Add Pin To Net: Unknown Pin: Pin U1-12
+Add Pin To Net: Unknown Pin: Pin U1-13
+Add Pin To Net: Unknown Pin: Pin U1-14
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component C2 100nF
+Add Class Member: Failed to add class member : Component C3 1uF
+Add Class Member: Failed to add class member : Component C4 100nF
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component Q1 AMS1117-3.3V_C5120796

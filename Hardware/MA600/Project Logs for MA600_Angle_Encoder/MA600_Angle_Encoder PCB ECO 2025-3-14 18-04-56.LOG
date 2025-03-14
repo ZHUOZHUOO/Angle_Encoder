@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=SPI_MOSI Pin=U1-1
+Removed Pin From Net: NetName=SPI_MISO Pin=U1-2
+Removed Pin From Net: NetName=SPI_SCLK Pin=U1-3
+Removed Pin From Net: NetName=SPI_CSN Pin=U1-4
+Removed Pin From Net: NetName=GND Pin=U1-5
+Removed Pin From Net: NetName=VDD Pin=U1-6
+Added Pin To Net: NetName=VDD Pin=U1-1
+Added Pin To Net: NetName=GND Pin=U1-2
+Added Pin To Net: NetName=SPI_CSN Pin=U1-3
+Added Pin To Net: NetName=SPI_SCLK Pin=U1-4
+Added Pin To Net: NetName=SPI_MISO Pin=U1-5
+Added Pin To Net: NetName=SPI_MOSI Pin=U1-6
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component C1 10uF
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component C2 10uF
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component C3 1uF
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component C4 100nF
+Added Member To Class: ClassName=MA600_Angle_Encoder Member=Component U1 BX-GH1.25-6PWT
+Added Room: Name=MA600_Angle_Encoder

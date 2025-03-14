@@ -1,0 +1,449 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2025/3/14</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">17:45:43</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc" class="file"><acronym title="F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc">F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">35</td></tr>
+</table>
+</td>
+</table><a name="IDJBXXFJLI50PECLNKY5MAJW4SFATPHT3EBFP3SHTJ0U0I4QMFXBH"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDS5OGTIMJB4TWBXRLEX1GHLQ54ODQ3XUY3L01G5DEJXPCKHSTWGHL">Clearance Constraint (Gap=6mil) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKMAIZ0RTRJQQMMQSWFTGBCVDEESDLSQIPQWTGKO3ZMMAE2IJGOJC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID5G0JY0AMF5QGLWEILKSA0PUBWJM4IAWA4CFUJQHA3TTJJF3IZW2D">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">18</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSJF0TMJVTEF3O4HCAEYE2GO14JTS5PXHALH3RHCWHMRLN00LIXS">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDN3WJRCQAYK1AOAP5TJ0HMP1QVD0OAC2ST0Q1VAH2PI34KDKGUBGI">Width Constraint (Min=10mil) (Max=20mil) (Preferred=15mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAXSX2LHMTYOXLKSJYC5NWHZ1MIGAN40XD01V3DB02NJQNQIUJA1P">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDE3R2WGZVSTIWP31NMH0SNHQJXLJPSN3JMKIWD3VFLP2MD3X13WL">Hole Size Constraint (Min=1mil) (Max=10000mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFVQZTFCTXKE2NGL4QU4DMTORSMBYRC4QHTNNJXE5YE5F1FDS0JSN">Hole To Hole Clearance (Gap=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHJSMRGLAL3XAIOQ5VXU4C3HF0GXKAMM0VUX3IVIKSQONFX1VKRZC">Minimum Solder Mask Sliver (Gap=2mil) (All),(All)</a></td>
+<td class="column2">12</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAHXFIKZHYADAPUUXP1DSPEGR5KNX2RLYJN4UMLGOXRYO5RDGEMOH">Silk To Solder Mask (Clearance=0mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNZFSR3I412GIDFHIY54ABKQRZIX0XCPA1CYVLKD1E4DLYH4T2WBF">Silk to Silk (Clearance=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3TEJCAIVBL0VOLK5AOSNU2FEPN4UHQWG1E5YQYGR2E1ZP2S4NSSH">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDV0H1GV0CSADLN1R0SJQUHHJF3QCKXCD2PKMHMHZYV4QYPA5Z0RO">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">35</td>
+</tr>
+</table><br><a name="IDS5OGTIMJB4TWBXRLEX1GHLQ54ODQ3XUY3L01G5DEJXPCKHSTWGHL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=6mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3859.671mil|Location2.X=3864.671mil|Location1.Y=2576.228mil|Location2.Y=2581.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3859.671mil|Location2.X=3864.671mil|Location1.Y=2576.228mil|Location2.Y=2581.228mil|Absolute=True">Clearance Constraint: (Collision &lt; 6mil) Between Pad Q1-2(3862.171mil,2578.728mil) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3822.269mil|Location2.X=3827.269mil|Location1.Y=2538.826mil|Location2.Y=2543.826mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3822.269mil|Location2.X=3827.269mil|Location1.Y=2538.826mil|Location2.Y=2543.826mil|Absolute=True">Clearance Constraint: (Collision &lt; 6mil) Between Region (0 hole(s)) Top Layer And Track (3802.008mil,2518.564mil)(3862.171mil,2578.728mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDKMAIZ0RTRJQQMMQSWFTGBCVDEESDLSQIPQWTGKO3ZMMAE2IJGOJC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3846.407mil|Location2.X=3877.936mil|Location1.Y=2562.964mil|Location2.Y=2594.492mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3846.407mil|Location2.X=3877.936mil|Location1.Y=2562.964mil|Location2.Y=2594.492mil|Absolute=True">Short-Circuit Constraint: Between Pad Q1-2(3862.171mil,2578.728mil) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 3862.171mil][Y = 2578.728mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3800.931mil|Location2.X=3881.832mil|Location1.Y=2524.62mil|Location2.Y=2605.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3800.931mil|Location2.X=3881.832mil|Location1.Y=2524.62mil|Location2.Y=2605.52mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (3802.008mil,2518.564mil)(3862.171mil,2578.728mil) on Top Layer Location : [X = 3841.381mil][Y = 2565.07mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID5G0JY0AMF5QGLWEILKSA0PUBWJM4IAWA4CFUJQHA3TTJJF3IZW2D"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3903.008mil|Location2.X=4036.849mil|Location1.Y=2347.575mil|Location2.Y=2455.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3903.008mil|Location2.X=4036.849mil|Location1.Y=2347.575mil|Location2.Y=2455.575mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-2(3937.008mil,2401.575mil) on Top Layer And Pad C4-2(4019.296mil,2362.205mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3858.626mil|Location2.X=3971.008mil|Location1.Y=2347.575mil|Location2.Y=2455.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3858.626mil|Location2.X=3971.008mil|Location1.Y=2347.575mil|Location2.Y=2455.575mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1(3876.179mil,2440.945mil) on Bottom Layer And Pad C1-2(3937.008mil,2401.575mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3903.008mil|Location2.X=3971.008mil|Location1.Y=2347.575mil|Location2.Y=2534.914mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3903.008mil|Location2.X=3971.008mil|Location1.Y=2347.575mil|Location2.Y=2534.914mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-2(3937.008mil,2401.575mil) on Top Layer And Pad Q1-1(3937.008mil,2519.685mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3768.008mil|Location2.X=3974.593mil|Location1.Y=2601.122mil|Location2.Y=2809.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3768.008mil|Location2.X=3974.593mil|Location1.Y=2601.122mil|Location2.Y=2809.905mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-2(3802.008mil,2755.905mil) on Top Layer And Pad U2-8(3965.672mil,2616.932mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3880.085mil|Location2.X=3993.931mil|Location1.Y=2349.575mil|Location2.Y=2374.835mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3880.085mil|Location2.X=3993.931mil|Location1.Y=2349.575mil|Location2.Y=2374.835mil|Absolute=True">Un-Routed Net Constraint: Net +3.3 Between Pad C3-1(3897.638mil,2362.205mil) on Bottom Layer And Pad C4-1(3976.378mil,2362.205mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3797.638mil|Location2.X=4020.118mil|Location1.Y=2262.205mil|Location2.Y=2400.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3797.638mil|Location2.X=4020.118mil|Location1.Y=2262.205mil|Location2.Y=2400.354mil|Absolute=True">Un-Routed Net Constraint: Net +3.3 Between Pad C3-1(3897.638mil,2362.205mil) on Bottom Layer And Track (3802.008mil,2300.354mil)(3920.118mil,2300.354mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.167mil|Location2.X=3893.732mil|Location1.Y=2349.575mil|Location2.Y=2453.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.167mil|Location2.X=3893.732mil|Location1.Y=2349.575mil|Location2.Y=2453.575mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C3-2(3854.72mil,2362.205mil) on Bottom Layer And Pad C6-1(3876.179mil,2440.945mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3958.825mil|Location2.X=4011.842mil|Location1.Y=2349.575mil|Location2.Y=2453.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3958.825mil|Location2.X=4011.842mil|Location1.Y=2349.575mil|Location2.Y=2453.575mil|Absolute=True">Un-Routed Net Constraint: Net +3.3 Between Pad C4-1(3976.378mil,2362.205mil) on Bottom Layer And Pad C5-2(3994.289mil,2440.945mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4001.743mil|Location2.X=4054.76mil|Location1.Y=2349.575mil|Location2.Y=2453.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4001.743mil|Location2.X=4054.76mil|Location1.Y=2349.575mil|Location2.Y=2453.575mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C4-2(4019.296mil,2362.205mil) on Bottom Layer And Pad C5-1(4037.207mil,2440.945mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3901.544mil|Location2.X=4011.842mil|Location1.Y=2428.315mil|Location2.Y=2453.575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3901.544mil|Location2.X=4011.842mil|Location1.Y=2428.315mil|Location2.Y=2453.575mil|Absolute=True">Un-Routed Net Constraint: Net +3.3 Between Pad C6-2(3919.097mil,2440.945mil) on Bottom Layer And Pad C5-2(3994.289mil,2440.945mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3901.544mil|Location2.X=3954.903mil|Location1.Y=2428.315mil|Location2.Y=2518.564mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3901.544mil|Location2.X=3954.903mil|Location1.Y=2428.315mil|Location2.Y=2518.564mil|Absolute=True">Un-Routed Net Constraint: Net +3.3 Between Pad C6-2(3919.097mil,2440.945mil) on Bottom Layer And Pad U2-14(3945.982mil,2502.753mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.004mil|Location2.X=3974.593mil|Location1.Y=2504.456mil|Location2.Y=2632.744mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.004mil|Location2.X=3974.593mil|Location1.Y=2504.456mil|Location2.Y=2632.744mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad Q1-1(3937.008mil,2519.685mil) on Top Layer And Pad U2-8(3965.672mil,2616.932mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3863.241mil|Location2.X=4208.661mil|Location1.Y=2427.165mil|Location2.Y=2598.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3863.241mil|Location2.X=4208.661mil|Location1.Y=2427.165mil|Location2.Y=2598.294mil|Absolute=True">Un-Routed Net Constraint: Net SPI_MOSI Between Pad U2-4(3879.052mil,2589.372mil) on Bottom Layer And Pad U1-1(4173.228mil,2440.945mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3937.06mil|Location2.X=4208.662mil|Location1.Y=2476.378mil|Location2.Y=2632.744mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3937.06mil|Location2.X=4208.662mil|Location1.Y=2476.378mil|Location2.Y=2632.744mil|Absolute=True">Un-Routed Net Constraint: Net SPI_MISO Between Pad U2-7(3945.982mil,2616.932mil) on Bottom Layer And Pad U1-2(4173.229mil,2490.158mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3977.421mil|Location2.X=4208.662mil|Location1.Y=2521.391mil|Location2.Y=2553.149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3977.421mil|Location2.X=4208.662mil|Location1.Y=2521.391mil|Location2.Y=2553.149mil|Absolute=True">Un-Routed Net Constraint: Net SPI_SCLK Between Pad U2-12(3993.232mil,2530.312mil) on Bottom Layer And Pad U1-3(4173.229mil,2539.37mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3897.69mil|Location2.X=4208.661mil|Location1.Y=2574.803mil|Location2.Y=2632.744mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3897.69mil|Location2.X=4208.661mil|Location1.Y=2574.803mil|Location2.Y=2632.744mil|Absolute=True">Un-Routed Net Constraint: Net SPI_CSN Between Pad U2-5(3906.612mil,2616.932mil) on Bottom Layer And Pad U1-4(4173.228mil,2588.583mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.75mil|Location2.X=4208.662mil|Location1.Y=2601.122mil|Location2.Y=2651.574mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3956.75mil|Location2.X=4208.662mil|Location1.Y=2601.122mil|Location2.Y=2651.574mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U2-8(3965.672mil,2616.932mil) on Bottom Layer And Pad U1-5(4173.229mil,2637.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3937.06mil|Location2.X=3974.593mil|Location1.Y=2486.941mil|Location2.Y=2518.564mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3937.06mil|Location2.X=3974.593mil|Location1.Y=2486.941mil|Location2.Y=2518.564mil|Absolute=True">Un-Routed Net Constraint: Net +3.3 Between Pad U2-14(3945.982mil,2502.753mil) on Bottom Layer And Pad U2-13(3965.672mil,2502.753mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHJSMRGLAL3XAIOQ5VXU4C3HF0GXKAMM0VUX3IVIKSQONFX1VKRZC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=2mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3893.238mil|Location2.X=3896.488mil|Location1.Y=2538.532mil|Location2.Y=2541.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3893.238mil|Location2.X=3896.488mil|Location1.Y=2538.532mil|Location2.Y=2541.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-1(3879.052mil,2530.312mil) on Bottom Layer And Pad U2-2(3879.052mil,2550.003mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975.796mil|Location2.X=3979.046mil|Location1.Y=2558.218mil|Location2.Y=2561.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975.796mil|Location2.X=3979.046mil|Location1.Y=2558.218mil|Location2.Y=2561.468mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.837mil &lt; 2mil) Between Pad U2-10(3993.232mil,2569.682mil) on Bottom Layer And Pad U2-11(3993.232mil,2550.003mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.837mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975.796mil|Location2.X=3979.046mil|Location1.Y=2577.903mil|Location2.Y=2581.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975.796mil|Location2.X=3979.046mil|Location1.Y=2577.903mil|Location2.Y=2581.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-10(3993.232mil,2569.682mil) on Bottom Layer And Pad U2-9(3993.232mil,2589.372mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975.796mil|Location2.X=3979.046mil|Location1.Y=2538.532mil|Location2.Y=2541.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975.796mil|Location2.X=3979.046mil|Location1.Y=2538.532mil|Location2.Y=2541.782mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-11(3993.232mil,2550.003mil) on Bottom Layer And Pad U2-12(3993.232mil,2530.312mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.202mil|Location2.X=3957.452mil|Location1.Y=2516.939mil|Location2.Y=2520.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.202mil|Location2.X=3957.452mil|Location1.Y=2516.939mil|Location2.Y=2520.189mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-13(3965.672mil,2502.753mil) on Bottom Layer And Pad U2-14(3945.982mil,2502.753mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3934.517mil|Location2.X=3937.767mil|Location1.Y=2516.939mil|Location2.Y=2520.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3934.517mil|Location2.X=3937.767mil|Location1.Y=2516.939mil|Location2.Y=2520.189mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.837mil &lt; 2mil) Between Pad U2-14(3945.982mil,2502.753mil) on Bottom Layer And Pad U2-15(3926.302mil,2502.753mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.837mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3914.832mil|Location2.X=3918.082mil|Location1.Y=2516.939mil|Location2.Y=2520.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3914.832mil|Location2.X=3918.082mil|Location1.Y=2516.939mil|Location2.Y=2520.189mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-15(3926.302mil,2502.753mil) on Bottom Layer And Pad U2-16(3906.612mil,2502.753mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3893.238mil|Location2.X=3896.488mil|Location1.Y=2558.218mil|Location2.Y=2561.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3893.238mil|Location2.X=3896.488mil|Location1.Y=2558.218mil|Location2.Y=2561.468mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.837mil &lt; 2mil) Between Pad U2-2(3879.052mil,2550.003mil) on Bottom Layer And Pad U2-3(3879.052mil,2569.682mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.837mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3893.238mil|Location2.X=3896.488mil|Location1.Y=2577.903mil|Location2.Y=2581.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3893.238mil|Location2.X=3896.488mil|Location1.Y=2577.903mil|Location2.Y=2581.153mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-3(3879.052mil,2569.682mil) on Bottom Layer And Pad U2-4(3879.052mil,2589.372mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3914.832mil|Location2.X=3918.082mil|Location1.Y=2599.497mil|Location2.Y=2602.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3914.832mil|Location2.X=3918.082mil|Location1.Y=2599.497mil|Location2.Y=2602.747mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-5(3906.612mil,2616.932mil) on Bottom Layer And Pad U2-6(3926.302mil,2616.932mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3934.517mil|Location2.X=3937.767mil|Location1.Y=2599.497mil|Location2.Y=2602.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3934.517mil|Location2.X=3937.767mil|Location1.Y=2599.497mil|Location2.Y=2602.747mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.837mil &lt; 2mil) Between Pad U2-6(3926.302mil,2616.932mil) on Bottom Layer And Pad U2-7(3945.982mil,2616.932mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.837mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.202mil|Location2.X=3957.452mil|Location1.Y=2599.497mil|Location2.Y=2602.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.202mil|Location2.X=3957.452mil|Location1.Y=2599.497mil|Location2.Y=2602.747mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (1.847mil &lt; 2mil) Between Pad U2-7(3945.982mil,2616.932mil) on Bottom Layer And Pad U2-8(3965.672mil,2616.932mil) on Bottom Layer [Bottom Solder] Mask Sliver [1.847mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3TEJCAIVBL0VOLK5AOSNU2FEPN4UHQWG1E5YQYGR2E1ZP2S4NSSH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.618mil|Location2.X=3941.092mil|Location1.Y=2286.854mil|Location2.Y=2339.004mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=F:\ZHUOZHUOO--Github\FOC_DRV8323\Hardware\FOC_V2\MT6816\MA600_Angle_Encoder.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.618mil|Location2.X=3941.092mil|Location1.Y=2286.854mil|Location2.Y=2339.004mil|Absolute=True">Net Antennae: Track (3802.008mil,2300.354mil)(3920.118mil,2300.354mil) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
